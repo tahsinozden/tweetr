@@ -1,5 +1,7 @@
 # tweetr
-a Twitter-like API coding task
+a Twitter-like API coding task.
+
+Testing can be performed using `Postman` the collection `tweetr.postman_collection.json`. Simply import it to `Postman` and start testing.
 
 ## API Documentation
 
