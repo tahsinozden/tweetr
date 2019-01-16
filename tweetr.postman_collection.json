@@ -1,0 +1,202 @@
+{
+	"id": "de3abf62-19da-1f24-639f-281d1478296e",
+	"name": "tweetr",
+	"description": "",
+	"order": [
+		"73b6af4c-2e2a-b916-831b-1f2b1270fcad",
+		"38b586eb-857b-7dd0-933b-22eacf52aa0b",
+		"ebeb228c-defe-e90e-3fa4-3a8a8ab82080",
+		"ce9068b9-623b-9834-b435-4c8cb93aea18",
+		"f51f0f4a-ffc1-130e-0bcb-c0cab71b1bbf"
+	],
+	"folders": [],
+	"folders_order": [],
+	"timestamp": 1547664470323,
+	"owner": 0,
+	"public": false,
+	"requests": [
+		{
+			"id": "38b586eb-857b-7dd0-933b-22eacf52aa0b",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/x-www-form-urlencoded",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost:8080/api/tweets/user1",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "de3abf62-19da-1f24-639f-281d1478296e",
+			"data": [
+				{
+					"key": "tweetContent",
+					"value": "new one is here",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"name": "Get user's tweets",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1547664497781,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		},
+		{
+			"id": "73b6af4c-2e2a-b916-831b-1f2b1270fcad",
+			"headers": "",
+			"headerData": [],
+			"url": "localhost:8080/tweets/user1/save",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "de3abf62-19da-1f24-639f-281d1478296e",
+			"data": [
+				{
+					"key": "tweetContent",
+					"value": "this is a new one",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"name": "Save a new tweet",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1547664472551,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		},
+		{
+			"id": "ce9068b9-623b-9834-b435-4c8cb93aea18",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/x-www-form-urlencoded",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost:8080/api/users/user1/follow/user2",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "de3abf62-19da-1f24-639f-281d1478296e",
+			"data": [
+				{
+					"key": "tweetContent",
+					"value": "new one is here",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"name": "Make user1 follow user2",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1547664546628,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		},
+		{
+			"id": "ebeb228c-defe-e90e-3fa4-3a8a8ab82080",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/x-www-form-urlencoded",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost:8080/api/tweets/user1/following",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "de3abf62-19da-1f24-639f-281d1478296e",
+			"data": [
+				{
+					"key": "tweetContent",
+					"value": "new one is here",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"name": "Get user's following users' tweets",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1547664524930,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		},
+		{
+			"id": "f51f0f4a-ffc1-130e-0bcb-c0cab71b1bbf",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/x-www-form-urlencoded",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost:8080/api/users/user1/unfollow/user2",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "de3abf62-19da-1f24-639f-281d1478296e",
+			"data": [
+				{
+					"key": "tweetContent",
+					"value": "new one is here",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"name": "Make user1 unfollow user2",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1547664665566,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		}
+	]
+}
