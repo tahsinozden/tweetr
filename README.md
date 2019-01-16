@@ -153,10 +153,6 @@ Testing can be performed using `Postman` the collection `tweetr.postman_collecti
     
 ## Code Challenge
 
-You have received this challenge as part of the recruiting process for HSBC. The contents of this exercise are confidential, so please do not distribute.
-
-You have 7 days to complete this challenge but it shouldn't take you longer than a few hours. Please send it back as soon as you're done.
-
 ## Description
 
 Build a simple social networking application, similar to Twitter, and
