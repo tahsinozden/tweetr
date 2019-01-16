@@ -8,7 +8,6 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -38,7 +37,7 @@ public class TweetServiceTest {
 
     @Test
     public void shouldSaveTweetForExistingUser() {
-        User user = new User("existingUser", new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
+        User user = new User("existingUser");
         when(dataService.getUserByName("existingUser")).thenReturn(Optional.of(user));
         tweetService.saveTweet("existingUser", "new tweet");
         verify(dataService, never()).saveUser(anyString());
@@ -47,7 +46,7 @@ public class TweetServiceTest {
 
     @Test
     public void shouldNotSaveTweetGreaterThanMaxSize() {
-        User user = new User("user", new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
+        User user = new User("user");
         String longTweet = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" +
                 "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
         tweetService.saveTweet("user", longTweet);
@@ -57,7 +56,7 @@ public class TweetServiceTest {
 
     @Test
     public void shouldSaveTweetForNonExistingUser() {
-        User user = new User("newUser", new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
+        User user = new User("newUser");
         when(dataService.getUserByName("newUser")).thenReturn(Optional.empty());
         when(dataService.saveUser("newUser")).thenReturn(user);
         tweetService.saveTweet("newUser", "new tweet");
@@ -67,7 +66,8 @@ public class TweetServiceTest {
 
     @Test
     public void shouldGetTweetsByUserNameWhenUserExists() {
-        User user = new User("user", Arrays.asList(new Tweet("user", "new tweet", LocalDateTime.now())), new ArrayList<>(), new ArrayList<>());
+        User user = new User("user");
+        user.setTweets(Arrays.asList(new Tweet("user", "new tweet", LocalDateTime.now())));
         when(dataService.getUserByName("user")).thenReturn(Optional.of(user));
         List<Tweet> actual = tweetService.getTweetsByUserName("user");
         assertThat(actual).isNotEmpty();
@@ -82,9 +82,13 @@ public class TweetServiceTest {
 
     @Test
     public void shouldGetFollowingUserTweetsByUserName() {
-        User srcUser = new User("srcUser", Arrays.asList(new Tweet("srcUser", "new1 tweet", LocalDateTime.now())), new ArrayList<>(), new ArrayList<>());
-        User user1 = new User("user1", Arrays.asList(new Tweet("user1", "new2 tweet", LocalDateTime.now())), new ArrayList<>(), new ArrayList<>());
-        User user2 = new User("user2", Arrays.asList(new Tweet("user2", "new3 tweet", LocalDateTime.now())), new ArrayList<>(), new ArrayList<>());
+        User srcUser = new User("srcUser");
+        srcUser.setTweets(Arrays.asList(new Tweet("srcUser", "new1 tweet", LocalDateTime.now())));
+        User user1 = new User("user1");
+        user1.setTweets(Arrays.asList(new Tweet("user1", "new2 tweet", LocalDateTime.now())));
+        User user2 = new User("user2");
+        user2.setTweets(Arrays.asList(new Tweet("user2", "new3 tweet", LocalDateTime.now())));
+
         srcUser.getFollowings().add(user1);
         srcUser.getFollowings().add(user2);
 
@@ -92,8 +96,8 @@ public class TweetServiceTest {
 
         List<Tweet> actual = tweetService.getFollowingUserTweetsByUserName("srcUser");
         assertThat(actual).hasSize(2);
-        assertThat(actual.get(0).getOwnerName()).isEqualTo("user1");
-        assertThat(actual.get(1).getOwnerName()).isEqualTo("user2");
+        assertThat(actual.get(0).getUserName()).isEqualTo("user1");
+        assertThat(actual.get(1).getUserName()).isEqualTo("user2");
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -108,10 +112,10 @@ public class TweetServiceTest {
 
     @Test
     public void shouldFollowUserWhenBothExist() {
-        User user1 = new User("user1", new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
+        User user1 = new User("user1");
         when(dataService.getUserByName("user1")).thenReturn(Optional.of(user1));
 
-        User user2 = new User("user2", new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
+        User user2 = new User("user2");
         when(dataService.getUserByName("user2")).thenReturn(Optional.of(user2));
 
         tweetService.followUser("user1", "user2");
@@ -121,10 +125,10 @@ public class TweetServiceTest {
 
     @Test
     public void shouldUnfollowUserWhenBothExist() {
-        User user1 = new User("user1", new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
+        User user1 = new User("user1");
         when(dataService.getUserByName("user1")).thenReturn(Optional.of(user1));
 
-        User user2 = new User("user2", new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
+        User user2 = new User("user2");
         when(dataService.getUserByName("user2")).thenReturn(Optional.of(user2));
 
         user1.getFollowings().add(user2);

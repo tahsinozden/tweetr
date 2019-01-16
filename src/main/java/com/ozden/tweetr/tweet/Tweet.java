@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class Tweet {
 
-    private String ownerName;
+    private String userName;
     private String content;
     private LocalDateTime creationDate;
 }

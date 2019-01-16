@@ -56,22 +56,22 @@ public class TweetService {
     }
 
     public void followUser(String followerUserName, String followedUserName) {
-        User srcUser = dataService.getUserByName(followerUserName)
+        User follower = dataService.getUserByName(followerUserName)
                 .orElseThrow(() -> new IllegalArgumentException(followerUserName + " doesn't exist!"));
-        User dstUser = dataService.getUserByName(followedUserName)
+        User followed = dataService.getUserByName(followedUserName)
                 .orElseThrow(() -> new IllegalArgumentException(followedUserName + " doesn't exist!"));
-        List<User> followings = srcUser.getFollowings();
-        if (!followings.contains(dstUser)) {
-            srcUser.getFollowings().add(dstUser);
+        List<User> followings = follower.getFollowings();
+        if (!followings.contains(followed)) {
+            follower.getFollowings().add(followed);
         }
     }
 
     public void unfollowUser(String followerUserName, String followedUserName) {
-        User srcUser = dataService.getUserByName(followerUserName)
+        User follower = dataService.getUserByName(followerUserName)
                 .orElseThrow(() -> new IllegalArgumentException(followerUserName + " doesn't exist!"));
-        User dstUser = dataService.getUserByName(followedUserName)
+        User followed = dataService.getUserByName(followedUserName)
                 .orElseThrow(() -> new IllegalArgumentException(followedUserName + " doesn't exist!"));
-        srcUser.getFollowings().remove(dstUser);
+        follower.getFollowings().remove(followed);
     }
 
 }

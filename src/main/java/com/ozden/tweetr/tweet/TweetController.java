@@ -48,8 +48,8 @@ public class TweetController {
      * @param dstUser user to be followed
      */
     @PostMapping("/users/{srcUser}/follow/{dstUser}")
-    public void followUser(@PathVariable("srcUser") String srcUser,
-                           @PathVariable("dstUser") String dstUser) {
+    public void follow(@PathVariable("srcUser") String srcUser,
+                       @PathVariable("dstUser") String dstUser) {
         tweetService.followUser(srcUser, dstUser);
     }
 
@@ -59,8 +59,8 @@ public class TweetController {
      * @param dstUser user to be unfollowed
      */
     @PostMapping("/users/{srcUser}/unfollow/{dstUser}")
-    public void unfollowUser(@PathVariable("srcUser") String srcUser,
-                             @PathVariable("dstUser") String dstUser) {
+    public void unfollow(@PathVariable("srcUser") String srcUser,
+                         @PathVariable("dstUser") String dstUser) {
         tweetService.unfollowUser(srcUser, dstUser);
     }
 }
