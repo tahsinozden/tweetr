@@ -1,6 +1,6 @@
 package com.ozden.tweetr.data;
 
-import com.ozden.tweetr.User;
+import com.ozden.tweetr.tweet.User;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

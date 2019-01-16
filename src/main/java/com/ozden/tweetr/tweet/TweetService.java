@@ -1,6 +1,5 @@
 package com.ozden.tweetr.tweet;
 
-import com.ozden.tweetr.User;
 import com.ozden.tweetr.data.DataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
