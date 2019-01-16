@@ -42,6 +42,17 @@ public class TweetServiceTest {
     }
 
     @Test
+    public void shouldNotSaveTweetGreaterThanMaxSize() {
+        User user = new User("user", new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
+        when(dataService.getUserByName("user")).thenReturn(Optional.of(user));
+        String longTweet = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" +
+                "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
+        tweetService.saveTweet("user", longTweet);
+        verify(dataService, never()).saveUser(anyString());
+        assertThat(user.getTweets()).isEmpty();
+    }
+
+    @Test
     public void shouldSaveTweetForNonExistingUser() {
         User user = new User("newUser", new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
         when(dataService.getUserByName("newUser")).thenReturn(Optional.empty());
