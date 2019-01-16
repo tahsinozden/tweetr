@@ -44,7 +44,6 @@ public class TweetServiceTest {
     @Test
     public void shouldNotSaveTweetGreaterThanMaxSize() {
         User user = new User("user", new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
-        when(dataService.getUserByName("user")).thenReturn(Optional.of(user));
         String longTweet = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" +
                 "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
         tweetService.saveTweet("user", longTweet);
