@@ -40,7 +40,6 @@ public class TweetService {
         User user = userOptional.get();
         List<Tweet> tweets = user.getTweets();
         tweets.sort((t1, t2) -> t2.getCreationDate().compareTo(t1.getCreationDate()));
-//        Collections.reverse(user.getTweets());
         return tweets;
     }
 
@@ -51,12 +50,10 @@ public class TweetService {
         }
         User user = userOptional.get();
 
-        List<Tweet> tweets = user.getFollowings().stream()
+        return user.getFollowings().stream()
                 .flatMap(u -> u.getTweets().stream())
                 .sorted((t1, t2) -> t2.getCreationDate().compareTo(t1.getCreationDate()))
                 .collect(Collectors.toList());
-        //        Collections.sort(tweets, );
-        return tweets;
     }
 
     public void followUser(String followerUserName, String followedUserName) {
