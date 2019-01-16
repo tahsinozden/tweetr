@@ -64,7 +64,91 @@ a Twitter-like API coding task
     });
   ```
 
+**Get user's following users' tweets**
+----
+
+
+* **URL**
+
+  /api/tweets/:user/following
+
+* **Method:**
+
+  `GET`
   
+*  **URL Params**
+
+* **Data Params**
+
+* **Sample Call:**
+
+  ```javascript
+    $.ajax({
+      url: "/api/tweets/user1/following",
+      dataType: "json",
+      type : "GET",
+      success : function(r) {
+        console.log(r);
+      }
+    });
+  ```
+**Make user1 follow user2**
+----
+
+
+* **URL**
+
+  /api/users/:user1/follow/:user2
+
+* **Method:**
+
+  `POST`
+  
+*  **URL Params**
+
+* **Data Params**
+
+* **Sample Call:**
+
+  ```javascript
+    $.ajax({
+      url: "/api/users/user1/follow/user2",
+      dataType: "json",
+      type : "POST",
+      success : function(r) {
+        console.log(r);
+      }
+    });
+    ```
+**Make user1 unfollow user2**
+----
+
+
+* **URL**
+
+  /api/users/:user1/unfollow/:user2
+
+* **Method:**
+
+  `POST`
+  
+*  **URL Params**
+
+* **Data Params**
+
+* **Sample Call:**
+
+  ```javascript
+    $.ajax({
+      url: "/api/users/user1/unfollow/user2",
+      dataType: "json",
+      type : "POST",
+      success : function(r) {
+        console.log(r);
+      }
+    });
+    ```
+    
 ## Code Challenge
 
 You have received this challenge as part of the recruiting process for HSBC. The contents of this exercise are confidential, so please do not distribute.
