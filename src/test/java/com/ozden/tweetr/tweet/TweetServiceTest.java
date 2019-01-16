@@ -1,11 +1,11 @@
 package com.ozden.tweetr.tweet;
 
 import com.ozden.tweetr.data.DataService;
+import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.MockitoAnnotations;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -17,7 +17,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
 
-@RunWith(MockitoJUnitRunner.class)
 public class TweetServiceTest {
 
     @Mock
@@ -25,6 +24,11 @@ public class TweetServiceTest {
 
     @InjectMocks
     private TweetService tweetService;
+
+    @Before
+    public void setUp() {
+        MockitoAnnotations.initMocks(this);
+    }
 
     @Test
     public void shouldSaveUser() {
